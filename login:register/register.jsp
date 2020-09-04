@@ -29,7 +29,7 @@
     <input type="text" name="id" placeholder="ID">
 	<input type="password" name="password" placeholder="Password">
 	<a href="#">Forgot Your Password</a>
-	<input type="submit" value="로그인"class="button">
+	<input type="submit" value="Sign in"class="button">
 	</form>
 <!-- 로그인 끝 --> 
 </div>
@@ -41,7 +41,7 @@
 			<button class="ghost" id="signIn">Sign in</button>
 		</div>
 		<div class="overlay-panel overlay-right">
-			<h1>Hello, Friend!</h1>
+			<h1><span>Hello</span> Friend!</h1>
 			<p>회원가입 후 이용해 보세요!</p>
 			<button class="ghost" id="signUp">Sign up</button>
 		</div>

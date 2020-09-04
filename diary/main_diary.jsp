@@ -22,7 +22,7 @@
 		<div id="nav">
         <ul class="main">
           <li>
-            <a href="#"><%= writer %> 님 안녕하세요 !</a>
+            <a href="#" style="color: #fff"><%= writer %> 님 안녕하세요 !</a>
             <ul class="sub">
               <li><a href="logout.jsp">로그아웃</a></li>
               <li><a href="info.jsp">회원정보 변경</a></li>
@@ -68,45 +68,44 @@
 				endPage=totalPages;
 			}
 			int start = (cPage -1)*5;
+			//페이징 처리위한 변수 설정
 			
 			ArrayList<DiaryList> diarylist = ddb.getAll(writer, start);
 		%>	
-				<table border='1'>
+				<table>
+				<tr id="write"><td colspan="3" align="right">
+				<a href='diary_write.jsp'>글쓰기</a></td></tr>
 
-				<tr><td>번호</td>
+				<tr><td width="10%" id="table_top">No</td>
 
-				<td>제목</td>
+				<td width="70%" id="table_top">Title</td>
 
-				<td>날짜</td></tr>		
+				<td id="table_top">Date</td></tr>		
 	<% 
+				
 			for(int i=0;i<diarylist.size();i++){
 				if(rs.next()){
 					dl.setRn(1, i);
 					//page 1(1-5까지 출력)
 					if(cPage>1){ //페이지 1이상일 경우 6부터 일씩 증가하도록 해줌
-						dl.setRn((cPage-1)*5, i);
+						dl.setRn((cPage-1)*5+1, i);
 					}
 	%>
-					<tr>
-					<td><%= dl.getRn() %></td>
+					<tr id="table_bottom">
+					<td ><%= dl.getRn() %></td>
 					<!-- 개인용 다이어리이므로 글머리처리 따로 해줌  -->
-					<td>
+					<td align="left">
 					<a href="showcontent.jsp?id=<%=rs.getInt("id")%>&writer=<%=rs.getString("writer")%>&page=<%=cPage%>">
 					<%= diarylist.get(i).getTitle() %></a></td>
-					<td> <%= diarylist.get(i).getDate() %> </td>
+					<td > <%= diarylist.get(i).getDate() %> </td>
 					</tr>
 	<% 
 					}
-				}	
-		
+			}
 	%>	
-			</table>
-			</div>
-				<div id="content1_1">
-				<a href='diary_write.jsp'>글쓰기</a>
-				</div>
-				<div id="content1_2">
-				<ul class="pagination justyfy-content-center">
+					<tr height="100px">
+						<td colspan="3">
+						<ul class="pagination justyfy-content-center">
 					<%
 						if(startPage==1){
 					%>
@@ -143,7 +142,10 @@
 						}
 					%>
 				</ul>
-				</div>
+					</td>
+					</tr>
+			</table>
+		</div>
 			<!--다이어리 테이블 출력하기 끝 -->
 			<div id="content2" class="content">
 			content02

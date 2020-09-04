@@ -1,15 +1,27 @@
 @charset "UTF-8";
+#body{
+	padding-left:20px;
+}
 form {
-	 text-align:center; 
-	 padding-top: 10%;
+	 text-align:left; 
+	 width:100%;
+	 margin-top:20px;
 	 position: relative;
 }
 form #diary_title{
+	width:80%;
 	margin: 10px 10px;
 	padding : 10px;
 }
-form #year, #month, #day{
-	margin: 10px 0;
+form #year{
+	margin: 10px;
+	border: 3px solid #ddd;
+	width:70px;
+	height:20px;
+	width:70px;
+}
+form #diary_write{
+	width:85%;
 }
 option{
 	padding: 10px;
@@ -26,10 +38,22 @@ form #diary_write{
 	padding: 12px 40px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	transition: transform 80ms ease-in;
+	transition: .5s;
 }
-#botton:hover{
-	background-color: #e55d87;
-	color:#e55d87;
+#button:hover{
+	background-color: #4897b1;
+	color:#fff;
 }
-
+select {
+	border: 3px solid #ddd;
+	border-radius:0;
+	width:70px;
+	height:25px;
+	font-size:15px;
+	color:#999;
+	-webkit-appearance: none;
+}
+select::-ms-expand { display:none; }
+option{
+	-webkit-appearance: none;
+}

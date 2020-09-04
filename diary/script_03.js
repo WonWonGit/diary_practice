@@ -1,5 +1,4 @@
 var content1 = document.getElementById("content1");
-var content1_5 = document.getElementById("content1_1");
 var content2 = document.getElementById("content2");
 var content3 = document.getElementById("content3");
 var btn1 = document.getElementById("btn1");
@@ -8,7 +7,6 @@ var btn3 = document.getElementById("btn3");
 		
 function openMENU1(){
 	content1.style.transform = "translateX(0)";
-	content1_5.style.transform = "translateX(0)";
 	btn1.style.color = "#4897b1";
 	content2.style.transform = "translateX(1500px)";
 	btn2.style.color = "#000";
@@ -17,7 +15,6 @@ function openMENU1(){
 }
 function openMENU2(){
 	content1.style.transform = "translateX(1500PX)";
-	content1_5.style.transform = "translateX(1500px)";
 	btn1.style.color = "#000";
 	content2.style.transform = "translateX(0)";
 	btn2.style.color = "#4897b1";
@@ -25,7 +22,7 @@ function openMENU2(){
 }
 function openMENU3(){
 	content1.style.transform = "translateX(1500PX)";
-	content1_5.style.transform = "translateX(1500px)";
+	btn1.style.color = "#000";
 	content2.style.transform = "translateX(1500px)";
 	btn2.style.color = "#000";
 	content3.style.transform = "translateX(0)";
