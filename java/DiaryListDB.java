@@ -70,7 +70,7 @@ private static DiaryListDB instance = new DiaryListDB();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from diary where writer=? order by id desc "
+		String sql = "select * from diary where writer=? order by date "
 					+"Limit ?, 5";
 
 		ArrayList<DiaryList> diarylist = new ArrayList<>();
@@ -162,26 +162,43 @@ private static DiaryListDB instance = new DiaryListDB();
 		}
 		return re;
 	}
+	@SuppressWarnings({ "resource", "null" })
 	public int deletediary(int d_id) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int re = -1;
-		
-		String sql = "DELETE FROM diary WHERE id=?";
-		
+		String sql = null;
+		ResultSet rs = null;
+		int max = 0;
 		try {
+			sql = "DELETE FROM diary WHERE id=?";
 			con = getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, d_id);
 			pstmt.executeUpdate();
-			re = 1;
 			con.setAutoCommit(true);
+			try {
+				sql ="select max(id) form diary;";
+					pstmt = con.prepareStatement(sql);
+					pstmt.executeQuery();
+					max = rs.getInt(1);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			sql = "ALTER TABLE diary AUTO_INCREMENT=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, max+1);
+			pstmt.executeUpdate();
+			re = 1;
+			pstmt.close();
 		}
 		return re;
 	}
+	//페이징처리
 	public int getPage(String writer) {
 		int cnt=0;
 		Connection con = null;

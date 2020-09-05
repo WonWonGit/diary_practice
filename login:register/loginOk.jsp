@@ -15,7 +15,7 @@
 	
 	if(mud.login(member.getId(), member.getPassword())==1){
 		session.setAttribute("userid", user_id);
-		response.sendRedirect("main_diary.jsp?page=1");
+		response.sendRedirect("main_diary.jsp");
 		}
 	else if(mud.login(member.getId(), member.getPassword())==0){
 %>

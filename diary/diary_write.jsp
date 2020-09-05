@@ -26,6 +26,7 @@
             </ul>
           </li>
         </ul>
+        
     <div id="body">   
 	<form method="post" action = "diary_writeOk.jsp" >
 		<p>&nbsp&nbsp제목</p>
@@ -92,6 +93,7 @@
 		   
 		</p>
 	</form>
+	</div>
 	</div>
 	<div id="footer"></div> 
 </body>

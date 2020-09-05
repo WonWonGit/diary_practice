@@ -47,8 +47,8 @@ a {
 
 button, .button {
 	border-radius: 20px;
-	border: 1px solid #e55d87;
-	background-color: #e55d87;
+	border: 1px solid #e1b1cf;
+	background-color: #e1b1cf;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -158,15 +158,20 @@ input {
 	transition: transform 0.6s ease-in-out;
 	z-index: 100;
 }
+.overlay-container span{
+	background-color:#e1b1cf;
+	margin-right:5px;
+	font-size:23px;
+	color:#184d2b;
+	padding:5px;
+}
 
 .container.right-panel-active .overlay-container{
 	transform: translateX(-100%);
 }
 
 .overlay {
-	background: #6cc3d9;
-	background: -webkit-linear-gradient(to right, #e55d87, #5fc3e4);
-	background: linear-gradient(to right, #e55d87, #5fc3e4);
+	background-color: #184d2b;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

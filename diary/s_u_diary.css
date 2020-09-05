@@ -1,0 +1,48 @@
+@charset "UTF-8";
+#table {
+	width:50%;
+	height:500px;
+	padding:20px;
+	left:25%;
+	display:flex;
+	position: absolute;
+	margin-top:20px;
+	border:1px solid #CDD3CE;
+	border-radius:30px;
+	box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+}
+#table table{
+	width:100%;
+}
+table tr{
+	height:50px;
+}
+#table #button{
+	position:absolute;
+	bottom:0;
+}
+.fas{
+ 	font-size: 20px;
+ 	text-align: center;
+ 	opacity: 0.2;
+ 	padding: 5px;
+}
+Button{
+	border:none;
+	background-color:#fff;
+}
+form {
+	 text-align:left; 
+	 width:100%;
+	 margin-top:20px;
+	 position: absolute;
+}
+form #diary_title,#date{
+	width:80%;
+	margin: 10px 10px;
+	padding : 10px;
+}
+form #diary_write{
+	width:85%;
+	margin: 10px 10px;
+}

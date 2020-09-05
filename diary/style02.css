@@ -4,12 +4,15 @@
 }
 a {
        text-decoration: none;
-        color: #333;
+       color:#000;
+      }
+   a:hover{
+   	font-weight:bold;
       }
    #nav{
    	border-bottom: 1px solid #ccc;
       height: 81px;
-      }
+      background-color:#322E3A;      }
       li {
         list-style: none;
       }
@@ -33,9 +36,10 @@ a {
       #nav > ul > li > .sub li {
         background-color: #333;
         line-height: 60px;
+        transition:.4s;
       }
       #nav > ul > li > .sub li:hover {
-        background-color: #e55d87;
+        background-color: #e1b1cf;
       }
       /* .sub li:hover a {color: #333;} */
       .sub li a {
@@ -72,6 +76,7 @@ a {
 	color: #4897b1;
 }
 .content{
+	height:100%;
 	display: flex;
 	justify-content: center;
 	text-align: center;
@@ -80,6 +85,7 @@ a {
 	transform: translateX(1500px);
 	/*나중에 수정하기*/
 }
+/*content1*/
 #content1{
 	transform: translateX(-50px);
 	position:absolute;
@@ -95,31 +101,32 @@ a {
 #content1 table td {
 	padding: 10px;
 }
-#content1_1 a {
-	top: 15%;
-	left: 75%;
-	position:absolute;
-}
-/*content1*/
 #content1 table{
-	width:70%;
+	width:80%;
+	margin-top:10px;
 	text-align:center;
-	margin-top: 8%;
 }
-#content1_2 > ul li{
+#content1 > ul li{
 	margin-left: 20px;
 	top:50%;
 }
-#content1_2 li{
+#content1 li{
 	display:inline-block;
+	padding:0 10px;
 }
-#content1_2 ul{
+#content1 ul{
 	text-align:center;
 }
-#content1_2{
-	position:absolute;
-	margin: 0 auto;
-	margin-top: 330px;
+#content1 table #write{
+	background-color:#fff;
 }
-
-
+#content1 table #table_top{
+	color:#fff;
+	background-color: #184d2b;
+}
+#content1 table #table_bottom{
+	background-color: #eee;
+}
+#content1 table #table_bottom:hover{
+	background-color: #ccc;
+}
