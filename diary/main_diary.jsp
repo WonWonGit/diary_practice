@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="User.*"  %>
-<%@ page import="myUtil.HanConv" %>
-<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.*"%>
+<%@ page import="java.util.Date" %>
+<%@page import="java.text.SimpleDateFormat" %>
 <%@ page import="UserDiary.*"  %>
+<%@ page import="UserTodo.*"  %>
 <%@ page import = "java.sql.*" %>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -15,7 +17,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="style02.css">
+
+<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style02.css">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="bootstrap.min.css" />
+	<script src="bootstrap.min.js"></script>
 </head>
 <body>
 <!-- 네비바 -->
@@ -73,8 +83,9 @@
 			ArrayList<DiaryList> diarylist = ddb.getAll(writer, start);
 		%>	
 				<table>
-				<tr id="write"><td colspan="3" align="right">
-				<a href='diary_write.jsp'>글쓰기</a></td></tr>
+				<tr id="write">
+				<td colspan="3" align="right">
+				<a href='diary_write.jsp' class="text-muted">글쓰기</a></td></tr>
 
 				<tr><td width="10%" id="table_top">No</td>
 
@@ -104,7 +115,7 @@
 			}
 	%>	
 					<tr height="100px">
-						<td colspan="3">
+						<td colspan="3" width="100%" align="center" >
 						<ul class="pagination justyfy-content-center">
 					<%
 						if(startPage==1){
@@ -148,13 +159,57 @@
 		</div>
 			<!--다이어리 테이블 출력하기 끝 -->
 			<div id="content2" class="content">
-			content02
+				<%
+				Timestamp today = new Timestamp(System.currentTimeMillis());       
+				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+				String toDay = date.format(today);
+				
+				out.println("TODAY : "+toDay);
+				
+				%>
 			</div>
-			<div id="content3" class="content">
+			<!-- Button to Open the Modal -->
+<button id="modal_content2" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+  write
+</button>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">I have to do</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form method="post" action="todoOk.jsp" class="modal-form">
+        	<input type="text" name="todo">
+        	<input type="submit" value="save" id="save">
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- The Modal end -->
+	<div id="content3" class="content">
 			content03
 			</div>
 		</div>
 	</div>
 <script type ="text/javascript" src="script_03.js" defer> </script>
+<script>
+	$('#myModal').on('shown.bs.modal', function () {
+	  $('#myInput').trigger('focus')
+	})
+</script>
 </body>
 </html>

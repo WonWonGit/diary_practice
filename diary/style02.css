@@ -6,6 +6,9 @@ a {
        text-decoration: none;
        color:#000;
       }
+.write_table{
+	color:000;
+}
    a:hover{
    	font-weight:bold;
       }
@@ -125,8 +128,35 @@ a {
 	background-color: #184d2b;
 }
 #content1 table #table_bottom{
+	text-align:center;
 	background-color: #eee;
 }
 #content1 table #table_bottom:hover{
 	background-color: #ccc;
+}
+#content1 table #page_tb .pagination{
+	display:inline-block;
+	text-align:center;
+}
+#content1 table #page_tb .page-item{
+	text-align:center;
+}
+
+/*content 2*/
+#content2{
+	width:100%;
+}
+#modal_content2{
+	margin-top:20px;
+	left:80%;
+	position:relative;
+}
+#save{
+	background-color:#4897b1;
+	padding:10px;
+	border:none;
+	border-radius:5px;
+	width:60px;
+	color:#fff;
+	
 }
