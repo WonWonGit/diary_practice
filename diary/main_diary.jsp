@@ -82,7 +82,7 @@
 			
 			ArrayList<DiaryList> diarylist = ddb.getAll(writer, start);
 		%>	
-				<table>
+				<table >
 				<tr id="write">
 				<td colspan="3" align="right">
 				<a href='diary_write.jsp' class="text-muted">글쓰기</a></td></tr>
@@ -114,8 +114,8 @@
 					}
 			}
 	%>	
-					<tr height="100px">
-						<td colspan="3" width="100%" align="center" >
+					<tr height="100px" align="center" id="page_tb">
+						<td colspan="3">
 						<ul class="pagination justyfy-content-center">
 					<%
 						if(startPage==1){
@@ -159,15 +159,32 @@
 		</div>
 			<!--다이어리 테이블 출력하기 끝 -->
 			<div id="content2" class="content">
-				<%
-				Timestamp today = new Timestamp(System.currentTimeMillis());       
+		<%
+				TodoListDB tld = TodoListDB.getinstance();
+				Timestamp today = new Timestamp(System.currentTimeMillis());  
 				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 				String toDay = date.format(today);
-				
+		%>
+			<div id="today">
+		<% 		
 				out.println("TODAY : "+toDay);
-				
-				%>
+		%>
 			</div>
+			</div>
+			<div id="todocon">
+		<% 
+				ArrayList<TodoList> todolist = tld.get(writer, today);
+				for(int i=0;i < todolist.size(); i++){	
+		%>			
+				
+					<%= todolist.get(i).getTodo_con()+"</br>" %>
+		<% 
+				}
+		%>	
+			</div>	
+				
+				
+				
 			<!-- Button to Open the Modal -->
 <button id="modal_content2" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
   write
