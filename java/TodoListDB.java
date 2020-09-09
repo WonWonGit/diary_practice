@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 
 public class TodoListDB{
@@ -76,6 +78,43 @@ private static TodoListDB instance = new TodoListDB();
 			}
 		}
 		return re;	
+	}
+	public ArrayList<TodoList> get(String writer, Timestamp date){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql=null;
+		ArrayList<TodoList>todolist = new ArrayList();
+		
+		try {
+			sql = " delete from todo where date < (select date_format(now(),'%y-%m-%d'));";
+			con = getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setTimestamp(1, date);
+			pstmt.executeUpdate();
+			con.setAutoCommit(true);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				sql = "select * from todo where writer=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, writer);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					todolist.add(new TodoList(rs.getInt(1),rs.getString(2)
+									,rs.getTimestamp(3),rs.getString(4)));
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return todolist;
+		
 	}
 	
 	
