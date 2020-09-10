@@ -46,3 +46,6 @@ form #diary_write{
 	width:85%;
 	margin: 10px 10px;
 }
+input[type="submit"]{
+	font-family: FontAwesome;
+}

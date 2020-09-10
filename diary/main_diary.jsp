@@ -26,6 +26,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<link rel="stylesheet" href="bootstrap.min.css" />
 	<script src="bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/9db93bd103.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- 네비바 -->
@@ -164,6 +165,8 @@
 				Timestamp today = new Timestamp(System.currentTimeMillis());  
 				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 				String toDay = date.format(today);
+				String todo_con=null;
+				int t_id=0;
 		%>
 			<div id="today">
 		<% 		
@@ -172,15 +175,26 @@
 			</div>
 			</div>
 			<div id="todocon">
+			<table width="300px">
 		<% 
-				ArrayList<TodoList> todolist = tld.get(writer, today);
+				ArrayList<TodoList> todolist = tld.get(writer);
 				for(int i=0;i < todolist.size(); i++){	
-		%>			
-				
-					<%= todolist.get(i).getTodo_con()+"</br>" %>
+					t_id=todolist.get(i).getT_id(); 
+					todo_con=todolist.get(i).getTodo_con();
+		%>		
+				<tr>	
+				<td>
+					<%= todo_con %>
+				</td>
+				<td>	
+					<a href="tododelet.jsp?t_id=<%= t_id %>"><i class="fas fa-trash-alt"></i></a>
+				</td>
+				</tr>	
 		<% 
 				}
 		%>	
+			
+			</table>
 			</div>	
 				
 				

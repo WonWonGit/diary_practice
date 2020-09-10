@@ -40,7 +40,7 @@
 		</textarea></p>
 		<p><input type="hidden" name="id" value="<%= rs.getInt("id") %>"></p>
 		<p>
-		<input type="submit" name="update" value="&#xf058" class="fas fa-check-circle">
+		<input type="submit" name="update" value="수정하기">
 		<input type="reset" value="지우기" name="delete">
 		</p>
 	</form>

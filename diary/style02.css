@@ -148,8 +148,8 @@ a {
 }
 #modal_content2{
 	left:80%;
-	top:-10%;
-	position:relative;
+	top:18%;
+	position:absolute;
 }
 #save{
 	background-color:#4897b1;
@@ -174,3 +174,10 @@ a {
 	align:center;
 	padding:30px;
 }
+.fas{
+ 	font-size: 20px;
+ 	text-align: center;
+ 	opacity: 0.2;
+ 	padding: 5px;
+}
+a:link { color: #513926; }

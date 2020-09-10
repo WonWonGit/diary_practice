@@ -79,7 +79,7 @@ private static TodoListDB instance = new TodoListDB();
 		}
 		return re;	
 	}
-	public ArrayList<TodoList> get(String writer, Timestamp date){
+	public ArrayList<TodoList> get(String writer){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -91,9 +91,9 @@ private static TodoListDB instance = new TodoListDB();
 			con = getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setTimestamp(1, date);
 			pstmt.executeUpdate();
 			con.setAutoCommit(true);
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -115,6 +115,26 @@ private static TodoListDB instance = new TodoListDB();
 		}
 		return todolist;
 		
+	}
+	public int tododelete(int t_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int re = -1;
+		String sql=null;
+		try {
+			sql="delete from todo where t_id=?";
+			con = getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, t_id);
+			pstmt.executeUpdate();
+			con.setAutoCommit(true);
+			re = 1;
+		}catch(Exception e) {
+			e.printStackTrace();
+			re=-1;
+		}
+		return re;
 	}
 	
 	
