@@ -136,5 +136,26 @@ public class MemberUserDB {
 			}catch(Exception e) {}
 		return member;
 	}
+	public int updatemember(String id, String password, String email) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int re = -1;
+		String sql="update users set password=?, email=? where id=?";
+		
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, password);
+			pstmt.setString(2, email);
+			pstmt.setString(3, id);
+			
+			re = pstmt.executeUpdate();
+			re=1;
+		}catch(Exception e) {
+			e.printStackTrace();
+			re = -1;
+		}
+		return re;
+	}
 	
 }
